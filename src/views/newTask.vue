@@ -7,12 +7,30 @@
       class="fourDialog"
       :before-close="closeFun"
     >
-    <span slot="title" @click="closeFun" style="float:right;margin-right:1rem;font-size:1.5rem">X</span>
+      <span
+        slot="title"
+        @click="closeFun"
+        style="float: right; margin-right: 1rem; font-size: 1.5rem"
+        >X</span
+      >
 
-      <el-form :model="newForm" :hide-required-asterisk="true" :rules="rules" size="mini" ref="newtaskBox">
-        <el-form-item label="事项" :label-width="formLabelWidth" prop="matterName">
+      <el-form
+        :model="newForm"
+        :hide-required-asterisk="true"
+        :rules="rules"
+        ref="newtaskBox"
+      >
+        <el-form-item
+          label="事项"
+          :label-width="formLabelWidth"
+          prop="matterName"
+        >
           <br />
-          <el-input v-model="newForm.matterName" size="mini" placeholder="请输入内容"></el-input>
+          <el-input
+            v-model="newForm.matterName"
+            size="mini"
+            placeholder="请输入内容"
+          ></el-input>
         </el-form-item>
         <el-form-item label="象限" :label-width="formLabelWidth">
           <br />
@@ -31,7 +49,7 @@
             @change="changeFun"
           ></el-checkbox>
         </el-form-item>
-        <el-form-item label="日程时间安排" prop="matterOpen">
+        <el-form-item label="日程时间安排" prop="matterOpen" size="mini">
           <el-date-picker
             :editable="false"
             v-model="newForm.matterOpen"
@@ -42,9 +60,9 @@
             :picker-options="pickerOptions"
           ></el-date-picker>
         </el-form-item>
-        <el-form-item prop="end">
+        <el-form-item prop="end" size="mini">
           <el-date-picker
-            style="margin-top:10px"
+            style="margin-top: 10px"
             :editable="false"
             v-model="newForm.end"
             format="yyyy-MM-dd"
@@ -61,14 +79,22 @@
       <div slot="footer" class="dialog-footer">
         <el-button
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold"
+          style="color: #333333; font-size: 18px; font-weight: bold"
           @click="closeFun"
-        >取 消</el-button>
+          >取 消</el-button
+        >
         <el-button
           @click="newTaskFun"
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold;margin-left:2.5rem;margin-right:2.215rem"
-        >添 加</el-button>
+          style="
+            color: #333333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 2.5rem;
+            margin-right: 2.215rem;
+          "
+          >添 加</el-button
+        >
       </div>
     </el-dialog>
   </div>
@@ -93,9 +119,7 @@ export default {
       },
       formLabelWidth: "32",
       rules: {
-        matterName: [
-          { required: true, message: " ", trigger: "blur" },
-        ],
+        matterName: [{ required: true, message: " ", trigger: "blur" }],
         matterOpen: [
           {
             type: "date",
@@ -117,9 +141,8 @@ export default {
         disabledDate: (time) => {
           if (this.newForm.end != "") {
             return time.getTime() > this.newForm.end;
-          } 
-          else {
-            return 
+          } else {
+            return;
           }
         },
       },
@@ -147,10 +170,10 @@ export default {
                 params: {
                   matterName: this.newForm.matterName,
                   important: this.newForm.important,
-                  matterOpenStr:moment(this.newForm.matterOpen).format(
+                  matterOpenStr: moment(this.newForm.matterOpen).format(
                     "yyyy-MM-DD"
                   ),
-                  endStr:  moment(this.newForm.end).format("yyyy-MM-DD"),
+                  endStr: moment(this.newForm.end).format("yyyy-MM-DD"),
                   urgent: this.newForm.urgent,
                   matterText: this.newForm.matterText,
                 },
@@ -158,8 +181,8 @@ export default {
             )
             .then((msg) => {
               if (msg.data.state === "2000") {
-                console.log('ssssssssssss');
-               
+                console.log("ssssssssssss");
+
                 Object.keys(this.newForm).forEach((key) => {
                   this.newForm[key] = "";
                 });
@@ -172,7 +195,7 @@ export default {
                 });
               }
             })
-            .catch( (error) => {
+            .catch((error) => {
               this.$message({
                 duration: 1000,
                 message: "添加失败",
@@ -193,16 +216,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-// .el-form-item {
-//   margin-bottom: 15px;
-// }
-// .el-form-item {
-//   margin-bottom: 0;
-// }
-// .el-form-item >>> .el-form-item__label {
-//   font-size: 1rem;
-//   color: #333333;
-//   font-weight: bold;
-// }
+<style scoped>
+/* .el-form-item {
+  margin-bottom: 15px;
+} */
+.el-form-item {
+  margin-bottom: 0;
+}
+.el-form-item >>> .el-form-item__label {
+  font-size: 1rem;
+  color: #333333;
+  font-weight: bold;
+}
 </style>
