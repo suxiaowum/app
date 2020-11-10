@@ -132,13 +132,13 @@
             label="重要"
             :true-label="1"
             :false-label="0"
-            v-model="newFormEdit.importantOne"
+            v-model="newFormEdit.important"
           ></el-checkbox>
           <el-checkbox
             label="紧急"
             :true-label="1"
             :false-label="0"
-            v-model="newFormEdit.urgentOne"
+            v-model="newFormEdit.urgent"
           ></el-checkbox>
         </el-form-item>
         <el-form-item label="日程时间安排">
@@ -459,8 +459,8 @@ export default {
             sessionStorage.getItem("userId"),
           {
             params: {
-              importantOne: this.newFormEdit.importantOne,
-              urgentOne: this.newFormEdit.urgentOne,
+              important: this.newFormEdit.important,
+              urgent: this.newFormEdit.urgent,
               matterId: Number(this.newFormEdit.matterId),
               finish: this.newFormEdit.finish,
               matterName: this.newFormEdit.matterName,
