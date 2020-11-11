@@ -183,7 +183,7 @@ export default {
             )
             .then((msg) => {
               if (msg.data.state === "2000") {
-                console.log("ssssssssssss");
+                // console.log("ssssssssssss");
 
                 Object.keys(this.newForm).forEach((key) => {
                   this.newForm[key] = "";
@@ -211,7 +211,7 @@ export default {
       console.log(msg);
     },
     closeFun() {
-      console.log(this.newTaskShow);
+      // console.log(this.newTaskShow);
       this.$emit("newTaskShowChange", false);
     },
   },

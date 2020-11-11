@@ -224,11 +224,11 @@ export default {
     test1(val) {
       console.log(val);
       this.newTaskShow = val;
-      this.allmsg();
+      this.searchTuding();
     },
     test2(val) {
       this.taskNoDialog = val;
-      this.allmsg();
+      this.searchTuding();
     },
     test3(val) {
       this.dataList = val;
