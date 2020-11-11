@@ -497,7 +497,7 @@
           ></el-checkbox>
           <el-checkbox label="紧急" :true-label="1" :false-label="0" v-model="newFormEdit.urgent"></el-checkbox>
         </el-form-item>
-        <el-form-item label="日程时间安排">
+        <el-form-item label="日程时间安排" size="mini">
           <span>是否循环</span>
           <el-switch
           :disabled="overForm.deptId !== 0"

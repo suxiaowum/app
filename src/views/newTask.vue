@@ -32,7 +32,7 @@
             placeholder="请输入内容"
           ></el-input>
         </el-form-item>
-        <el-form-item label="象限" :label-width="formLabelWidth">
+        <el-form-item label="象限" :label-width="formLabelWidth" size="mini">
           <br />
           <el-checkbox
             label="重要"
@@ -49,8 +49,9 @@
             @change="changeFun"
           ></el-checkbox>
         </el-form-item>
-        <el-form-item label="日程时间安排" prop="matterOpen" size="mini">
+        <el-form-item label="日程时间安排" prop="matterOpen">
           <el-date-picker
+            size="mini"
             :editable="false"
             v-model="newForm.matterOpen"
             type="date"
@@ -60,8 +61,9 @@
             :picker-options="pickerOptions"
           ></el-date-picker>
         </el-form-item>
-        <el-form-item prop="end" size="mini">
+        <el-form-item prop="end">
           <el-date-picker
+            size="mini"
             style="margin-top: 10px"
             :editable="false"
             v-model="newForm.end"

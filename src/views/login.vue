@@ -40,7 +40,7 @@ export default {
     };
   },
   created() {
-    sessionStorage.setItem("userId", "");
+    // sessionStorage.setItem("userId", "");
   },
   methods: {
     togo() {
@@ -60,7 +60,6 @@ export default {
                 sessionStorage.setItem("userId", msg.data.data.userId);
                 // sessionStorage.setItem("user", JSON.stringify(msg.data.data));
                 sessionStorage.setItem("login", "denglu");
-                console.log(sessionStorage.getItem("userId"));
                 this.$router.push("/index");
               } else {
                 this.$message({
