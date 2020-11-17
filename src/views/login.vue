@@ -3,21 +3,33 @@
   <!-- 登录页 -->
   <div class="loginBox">
     <el-row :gutter="10" class="loginRow">
-      <el-col :span="6" :offset="9" style="text-align:center">
+      <el-col :span="6" :offset="9" style="text-align: center">
         <span class="title">登 录</span>
       </el-col>
     </el-row>
-    <el-row :gutter="10" style="margin-top:40px;">
+    <el-row :gutter="10" style="margin-top: 40px">
       <el-col :span="19" :offset="1">
-        <el-form ref="loginForm" :model="loginForm" :rules="rules" label-width="80px">
+        <el-form
+          ref="loginForm"
+          :model="loginForm"
+          :rules="rules"
+          label-width="80px"
+        >
           <el-form-item label="用户名" prop="name">
             <el-input v-model="loginForm.name" size="mini"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="pass">
-            <el-input type="password" show-password v-model="loginForm.pass" size="mini"></el-input>
+            <el-input
+              type="password"
+              show-password
+              v-model="loginForm.pass"
+              size="mini"
+            ></el-input>
           </el-form-item>
-          <el-form-item style="text-align:center">
-            <el-button type="primary" style="width:100%" @click="togo">登 录</el-button>
+          <el-form-item style="text-align: center">
+            <el-button type="primary" style="width: 100%" @click="togo"
+              >登 录</el-button
+            >
           </el-form-item>
         </el-form>
       </el-col>
@@ -44,6 +56,8 @@ export default {
   },
   methods: {
     togo() {
+      this.$router.push("/index");
+
       this.$refs.loginForm.validate((valid) => {
         // 判断form rules
         if (valid) {

@@ -252,7 +252,7 @@ export default {
       axios
         .get(
           this.AJAX.AJAX_URL +
-            "/matter/update" +
+            "/matter/updates" +
             "?userId=" +
             sessionStorage.getItem("userId"),
           {
