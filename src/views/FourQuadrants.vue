@@ -9,7 +9,7 @@
           prefix-icon="el-icon-search"
           size="mini"
           v-model="input2"
-          style="margin-top:10px"
+          style="margin-top: 10px"
           @change="searchFun"
           @keyup.enter.native="enterBlur($event)"
         ></el-input>
@@ -17,7 +17,7 @@
       <el-col :span="2" :offset="1">
         <i
           class="el-icon-circle-plus-outline"
-          style="font-size:24px;line-height:40px"
+          style="font-size: 24px; line-height: 40px"
           @click="outlineClick"
         ></i>
       </el-col>
@@ -25,19 +25,19 @@
         <i
           v-if="tudingOn"
           class="iconfont icon-tuding"
-          style="font-size:24px;line-height:40px;color:rgb(53, 122, 252)"
+          style="font-size: 24px; line-height: 40px; color: rgb(53, 122, 252)"
           @click="searchTuding"
         ></i>
         <i
           v-else
           class="iconfont icon-tuding"
-          style="font-size:24px;line-height:40px"
+          style="font-size: 24px; line-height: 40px"
           @click="searchTuding"
         ></i>
       </el-col>
     </el-row>
     <!-- 上面两个象限 -->
-    <el-row style="margin-top:1.125rem" :gutter="10" v-show="miniBox">
+    <el-row style="margin-top: 1.125rem" :gutter="10" v-show="miniBox">
       <el-col :span="11" :offset="1">
         <el-card :body-style="{ padding: '0.5rem' }">
           <div>
@@ -45,42 +45,56 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/a.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+              >
                 <span @click="redClick">重要且紧急</span>
               </el-col>
             </el-row>
-            <div style="height:16rem; overflow-y:auto; ">
+            <div style="height: 16rem; overflow-y: auto">
               <div
-                v-for="(msg,key) in redData"
+                v-for="(msg, key) in redData"
                 :key="key"
                 class="center"
                 @click="taskData(msg)"
-                style="overflow: hidden;margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem"
+                style="
+                  overflow: hidden;
+                  margin-top: 1.1875rem;
+                  border-bottom: 1px solid #e5e5e5;
+                  padding-bottom: 0.5rem;
+                "
               >
                 <el-row :gutter="10">
                   <el-col :span="4">
                     <div
                       class="ColorNum"
-                      style="  background: rgba(254, 210, 210, 1);color:#F91F1F"
-                    >{{key+1}}</div>
+                      style="background: rgba(254, 210, 210, 1); color: #f91f1f"
+                    >
+                      {{ key + 1 }}
+                    </div>
                   </el-col>
-                  <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                  <el-col :span="20" class="textTop">{{
+                    msg.matterName
+                  }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.deptName}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.deptName }}</el-col
+                  >
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                  >
                 </el-row>
               </div>
             </div>
@@ -94,42 +108,56 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/b.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+              >
                 <span @click="orangeClick">重要但不紧急</span>
               </el-col>
             </el-row>
-            <div style="height:16rem; overflow-y:auto; ">
+            <div style="height: 16rem; overflow-y: auto">
               <div
-                v-for="(msg,key) in orangeData"
+                v-for="(msg, key) in orangeData"
                 :key="key"
                 class="center"
                 @click="taskData(msg)"
-                style="overflow: hidden;margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem"
+                style="
+                  overflow: hidden;
+                  margin-top: 1.1875rem;
+                  border-bottom: 1px solid #e5e5e5;
+                  padding-bottom: 0.5rem;
+                "
               >
                 <el-row :gutter="10">
                   <el-col :span="4">
                     <div
                       class="ColorNum"
-                      style="background:rgba(252, 235, 206, 1);color:#EF9C0C"
-                    >{{key +1}}</div>
+                      style="background: rgba(252, 235, 206, 1); color: #ef9c0c"
+                    >
+                      {{ key + 1 }}
+                    </div>
                   </el-col>
-                  <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                  <el-col :span="20" class="textTop">{{
+                    msg.matterName
+                  }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.deptName}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.deptName }}</el-col
+                  >
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                  >
                 </el-row>
               </div>
             </div>
@@ -138,7 +166,7 @@
       </el-col>
     </el-row>
     <!-- 下面两个象限 -->
-    <el-row style="margin-top:11px" :gutter="10" v-show="miniBox">
+    <el-row style="margin-top: 11px" :gutter="10" v-show="miniBox">
       <el-col :span="11" :offset="1">
         <el-card :body-style="{ padding: '0.5rem' }">
           <div>
@@ -146,42 +174,56 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/c.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+              >
                 <span @click="blueClick">不重要但紧急</span>
               </el-col>
             </el-row>
-            <div style="height:16rem; overflow-y:auto; ">
+            <div style="height: 16rem; overflow-y: auto">
               <div
-                v-for="(msg,key) in blueData"
+                v-for="(msg, key) in blueData"
                 :key="key"
                 @click="taskData(msg)"
                 class="center"
-                style="overflow: hidden;margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem"
+                style="
+                  overflow: hidden;
+                  margin-top: 1.1875rem;
+                  border-bottom: 1px solid #e5e5e5;
+                  padding-bottom: 0.5rem;
+                "
               >
                 <el-row :gutter="10">
                   <el-col :span="4">
                     <div
                       class="ColorNum"
-                      style="background:rgba(214, 228, 255, 1);color:#357AFC"
-                    >{{key+1}}</div>
+                      style="background: rgba(214, 228, 255, 1); color: #357afc"
+                    >
+                      {{ key + 1 }}
+                    </div>
                   </el-col>
-                  <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                  <el-col :span="20" class="textTop">{{
+                    msg.matterName
+                  }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.deptName}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.deptName }}</el-col
+                  >
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                  >
                 </el-row>
               </div>
             </div>
@@ -195,39 +237,56 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/d.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+              >
                 <span @click="greenClick">不重要且不紧急</span>
               </el-col>
             </el-row>
-            <div style="height:16rem; overflow-y:auto; ">
+            <div style="height: 16rem; overflow-y: auto">
               <div
-                v-for="(msg,key) in greenData"
+                v-for="(msg, key) in greenData"
                 :key="key"
                 @click="taskData(msg)"
                 class="center"
-                style="margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem; overflow: hidden;"
+                style="
+                  margin-top: 1.1875rem;
+                  border-bottom: 1px solid #e5e5e5;
+                  padding-bottom: 0.5rem;
+                  overflow: hidden;
+                "
               >
                 <el-row :gutter="10">
                   <el-col :span="4">
-                    <div class="ColorNum" style="background:#D2F3D3;color:#1FC326">{{key +1}}</div>
+                    <div
+                      class="ColorNum"
+                      style="background: #d2f3d3; color: #1fc326"
+                    >
+                      {{ key + 1 }}
+                    </div>
                   </el-col>
-                  <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                  <el-col :span="20" class="textTop">{{
+                    msg.matterName
+                  }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.deptName}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.deptName }}</el-col
+                  >
                 </el-row>
                 <el-row :gutter="10">
                   <el-col
                     :span="20"
                     :offset="4"
                     class="textCenter"
-                    style="margin-top:4px"
-                  >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                    style="margin-top: 4px"
+                    >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                  >
                 </el-row>
               </div>
             </div>
@@ -244,31 +303,43 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/a.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">重要且紧急</el-col>
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+                >重要且紧急</el-col
+              >
             </el-row>
             <div
-              v-for="(msg,key) in bigData"
+              v-for="(msg, key) in bigData"
               :key="key"
               class="center"
-              style="margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem; overflow:hidden"
+              style="
+                margin-top: 1.1875rem;
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 0.5rem;
+                overflow: hidden;
+              "
               @click="taskData(msg)"
             >
               <el-row :gutter="10">
                 <el-col :span="2">
                   <div
                     class="ColorNum"
-                    style="  background: rgba(254, 210, 210, 1);color:#F91F1F"
-                  >{{key+1}}</div>
+                    style="background: rgba(254, 210, 210, 1); color: #f91f1f"
+                  >
+                    {{ key + 1 }}
+                  </div>
                 </el-col>
-                <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                <el-col :span="20" class="textTop">{{ msg.matterName }}</el-col>
               </el-row>
               <el-row :gutter="10">
                 <el-col
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.deptName}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.deptName }}</el-col
+                >
               </el-row>
               <el-row :gutter="10">
                 <el-col
@@ -276,15 +347,17 @@
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.createTime}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.createTime }}</el-col
+                >
                 <el-col
                   v-else
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                >
               </el-row>
             </div>
           </div>
@@ -300,31 +373,42 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/b.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">重要但不紧急</el-col>
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+                >重要但不紧急</el-col
+              >
             </el-row>
             <div
-              v-for="(msg,key) in bigData"
+              v-for="(msg, key) in bigData"
               :key="key"
               class="center"
-              style="margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem"
+              style="
+                margin-top: 1.1875rem;
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 0.5rem;
+              "
               @click="taskData(msg)"
             >
               <el-row :gutter="10">
                 <el-col :span="2">
                   <div
                     class="ColorNum"
-                    style="  background: rgba(252, 235, 206, 1);color:#EF9C0C"
-                  >{{key+1}}</div>
+                    style="background: rgba(252, 235, 206, 1); color: #ef9c0c"
+                  >
+                    {{ key + 1 }}
+                  </div>
                 </el-col>
-                <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                <el-col :span="20" class="textTop">{{ msg.matterName }}</el-col>
               </el-row>
               <el-row :gutter="10">
                 <el-col
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.deptName}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.deptName }}</el-col
+                >
               </el-row>
               <el-row :gutter="10">
                 <el-col
@@ -332,15 +416,17 @@
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.createTime}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.createTime }}</el-col
+                >
                 <el-col
                   v-else
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                >
               </el-row>
             </div>
           </div>
@@ -356,31 +442,42 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/c.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">不重要但紧急</el-col>
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+                >不重要但紧急</el-col
+              >
             </el-row>
             <div
-              v-for="(msg,key) in bigData"
+              v-for="(msg, key) in bigData"
               :key="key"
               class="center"
-              style="margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem"
+              style="
+                margin-top: 1.1875rem;
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 0.5rem;
+              "
               @click="taskData(msg)"
             >
               <el-row :gutter="10">
                 <el-col :span="2">
                   <div
                     class="ColorNum"
-                    style="  background: rgba(214, 228, 255, 1);color:#357AFC"
-                  >{{key+1}}</div>
+                    style="background: rgba(214, 228, 255, 1); color: #357afc"
+                  >
+                    {{ key + 1 }}
+                  </div>
                 </el-col>
-                <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                <el-col :span="20" class="textTop">{{ msg.matterName }}</el-col>
               </el-row>
               <el-row :gutter="10">
                 <el-col
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.deptName}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.deptName }}</el-col
+                >
               </el-row>
               <el-row :gutter="10">
                 <el-col
@@ -388,15 +485,17 @@
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.createTime}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.createTime }}</el-col
+                >
                 <el-col
                   v-else
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                >
               </el-row>
             </div>
           </div>
@@ -412,28 +511,42 @@
               <el-col :span="4" :offset="0">
                 <img src="../assets/d.png" alt />
               </el-col>
-              <el-col :span="20" style="color:#333333; font-size:1rem; font-weight:bold">不重要且不紧急</el-col>
+              <el-col
+                :span="20"
+                style="color: #333333; font-size: 1rem; font-weight: bold"
+                >不重要且不紧急</el-col
+              >
             </el-row>
             <div
-              v-for="(msg,key) in bigData"
+              v-for="(msg, key) in bigData"
               :key="key"
               class="center"
-              style="margin-top:1.1875rem ;border-bottom:1px solid #e5e5e5; padding-bottom:0.5rem"
+              style="
+                margin-top: 1.1875rem;
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 0.5rem;
+              "
               @click="taskData(msg)"
             >
               <el-row :gutter="10">
                 <el-col :span="2">
-                  <div class="ColorNum" style="  background: #D2F3D3;color:#1FC326">{{key+1}}</div>
+                  <div
+                    class="ColorNum"
+                    style="background: #d2f3d3; color: #1fc326"
+                  >
+                    {{ key + 1 }}
+                  </div>
                 </el-col>
-                <el-col :span="20" class="textTop">{{msg.matterName}}</el-col>
+                <el-col :span="20" class="textTop">{{ msg.matterName }}</el-col>
               </el-row>
               <el-row :gutter="10">
                 <el-col
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.deptName}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.deptName }}</el-col
+                >
               </el-row>
               <el-row :gutter="10">
                 <el-col
@@ -441,15 +554,17 @@
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.createTime}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.createTime }}</el-col
+                >
                 <el-col
                   v-else
                   :span="20"
                   :offset="2"
                   class="textCenter"
-                  style="margin-top:4px"
-                >{{msg.matterOpen}}-{{msg.end}}</el-col>
+                  style="margin-top: 4px"
+                  >{{ msg.matterOpen }}-{{ msg.end }}</el-col
+                >
               </el-row>
             </div>
           </div>
@@ -461,7 +576,12 @@
       <img src="../assets/e.png" alt />
     </div>
     <!-- 收起 -->
-    <div class="flexButton" @click="putAwayClick" v-show="putAway" style="top:72%">
+    <div
+      class="flexButton"
+      @click="putAwayClick"
+      v-show="putAway"
+      style="top: 72%"
+    >
       <p>收起</p>
     </div>
     <!-- 修改事项 -->
@@ -473,12 +593,17 @@
       @close="closeDialog"
       :show-close="true"
     >
-    <span slot="title" @click="TaskEdit = false" style="float:right;margin-right:1rem;font-size:1.5rem">X</span>
+      <span
+        slot="title"
+        @click="TaskEdit = false"
+        style="float: right; margin-right: 1rem; font-size: 1.5rem"
+        >X</span
+      >
       <el-form :model="newFormEdit">
         <el-form-item label="事项" :label-width="formLabelWidth">
           <br />
           <el-input
-          :disabled="overForm.deptId !== 0"
+            :disabled="overForm.deptId !== 0"
             v-model="newFormEdit.matterName"
             size="mini"
             placeholder="请输入内容"
@@ -495,13 +620,18 @@
             v-model="newFormEdit.important"
             @change="changeFun"
           ></el-checkbox>
-          <el-checkbox label="紧急" :true-label="1" :false-label="0" v-model="newFormEdit.urgent"></el-checkbox>
+          <el-checkbox
+            label="紧急"
+            :true-label="1"
+            :false-label="0"
+            v-model="newFormEdit.urgent"
+          ></el-checkbox>
         </el-form-item>
         <el-form-item label="日程时间安排" size="mini">
           <span>是否循环</span>
           <el-switch
-          :disabled="overForm.deptId !== 0"
-            style="margin-left:1.25rem"
+            :disabled="overForm.deptId !== 0"
+            style="margin-left: 1.25rem"
             v-model="newFormEdit.forEach"
             :active-value="1"
             :inactive-value="0"
@@ -510,19 +640,27 @@
             @change="formSwitch"
           ></el-switch>
           <br />
-          <span>{{newFormEdit.matterOpen}}-{{newFormEdit.end}}</span>
+          <span>{{ newFormEdit.matterOpen }}-{{ newFormEdit.end }}</span>
         </el-form-item>
         <el-form-item label="事件提醒设置">
           <br />
-          <el-row :gutter="10" v-for="(msg,key) in dateMsg" :key="key">
-            <el-col :span="10">{{msg.remindTime}}</el-col>
+          <el-row :gutter="10" v-for="(msg, key) in dateMsg" :key="key">
+            <el-col :span="10">{{ msg.remindTime }}</el-col>
             <el-col :span="6" :offset="6">
-              <el-button type="text" @click="dateDelete(msg)" v-if="msg.userBy !== 0">删除</el-button>
+              <el-button
+                type="text"
+                @click="dateDelete(msg)"
+                v-if="msg.userBy !== 0"
+                >删除</el-button
+              >
             </el-col>
           </el-row>
         </el-form-item>
 
-        <el-form-item v-for="(domain, index) in newFormEdit.domains" :key="index">
+        <el-form-item
+          v-for="(domain, index) in newFormEdit.domains"
+          :key="index"
+        >
           <!-- <el-date-picker v-model="domain.date" type="date" format="YYYY-MM-DD" placeholder="date"></el-date-picker> -->
           <el-date-picker
             v-model="domain.dateValue"
@@ -545,23 +683,54 @@
       <div slot="footer" class="dialog-footer">
         <el-button
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold"
+          style="color: #333333; font-size: 18px; font-weight: bold"
           @click="TaskEdit = false"
-        >取 消</el-button>
+          >取 消</el-button
+        >
         <el-button
           @click="TaskEditTrue"
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold;margin-left:2.5rem;margin-right:2.215rem"
-        >保 存</el-button>
+          style="
+            color: #333333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 2.5rem;
+            margin-right: 2.215rem;
+          "
+          >保 存</el-button
+        >
       </div>
     </el-dialog>
     <!-- 新建事项 -->
-    <el-dialog :visible.sync="newTask" width="80%" top="5rem" class="fourDialog">
-      <span slot="title" @click="newTask = false" style="float:right;margin-right:1rem;font-size:1.5rem">X</span>
-      <el-form :model="newForm" :hide-required-asterisk="true" :rules="rules" ref="newtaskBox">
-        <el-form-item label="事项" :label-width="formLabelWidth" prop="matterName">
+    <el-dialog
+      :visible.sync="newTask"
+      width="80%"
+      top="5rem"
+      class="fourDialog"
+    >
+      <span
+        slot="title"
+        @click="newTask = false"
+        style="float: right; margin-right: 1rem; font-size: 1.5rem"
+        >X</span
+      >
+      <el-form
+        :model="newForm"
+        :hide-required-asterisk="true"
+        :rules="rules"
+        ref="newtaskBox"
+      >
+        <el-form-item
+          label="事项"
+          :label-width="formLabelWidth"
+          prop="matterName"
+        >
           <br />
-          <el-input v-model="newForm.matterName" size="mini" placeholder="请输入内容"></el-input>
+          <el-input
+            v-model="newForm.matterName"
+            size="mini"
+            placeholder="请输入内容"
+          ></el-input>
         </el-form-item>
         <el-form-item label="象限" :label-width="formLabelWidth" size="mini">
           <br />
@@ -595,7 +764,7 @@
         <el-form-item prop="end">
           <el-date-picker
             size="mini"
-            style="margin-top:10px"
+            style="margin-top: 10px"
             :editable="false"
             v-model="newForm.end"
             format="yyyy-MM-dd"
@@ -612,25 +781,43 @@
       <div slot="footer" class="dialog-footer">
         <el-button
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold"
+          style="color: #333333; font-size: 18px; font-weight: bold"
           @click="newTask = false"
-        >取 消</el-button>
+          >取 消</el-button
+        >
         <el-button
           @click="newTaskFun"
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold;margin-left:2.5rem;margin-right:2.215rem"
-        >添 加</el-button>
+          style="
+            color: #333333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 2.5rem;
+            margin-right: 2.215rem;
+          "
+          >添 加</el-button
+        >
       </div>
     </el-dialog>
     <!-- 事项信息 -->
-    <el-dialog :visible.sync="taskNoDialog" width="80%" top="5rem" class="fourDialog">
-    <span slot="title" @click="taskNoDialog = false" style="float:left;margin-left:1rem;font-size:1.5rem">X</span>
-      
-      <div style="border-bottom:1px solid #E5E5E5;padding-bottom:5px;">
+    <el-dialog
+      :visible.sync="taskNoDialog"
+      width="80%"
+      top="5rem"
+      class="fourDialog"
+    >
+      <span
+        slot="title"
+        @click="taskNoDialog = false"
+        style="float: left; margin-left: 1rem; font-size: 1.5rem"
+        >X</span
+      >
+
+      <div style="border-bottom: 1px solid #e5e5e5; padding-bottom: 5px">
         <el-card class="topRadios">
           <div v-if="this.overForm.finish === 0">
             <img class="overImg" src="../assets/g.png" ref="londImg" alt />
-            <span style="color:#333333">未完成</span>
+            <span style="color: #333333">未完成</span>
           </div>
           <div v-else>
             <img class="overImg" src="../assets/f.png" ref="londImg" alt />
@@ -638,15 +825,21 @@
           </div>
         </el-card>
         <div class="tudingBox" v-if="overForm.sign === 0" @click="signIn(1)">
-          <i class="iconfont icon-tuding" style="font-size:24px;line-height:40px;"></i>
+          <i
+            class="iconfont icon-tuding"
+            style="font-size: 24px; line-height: 40px"
+          ></i>
         </div>
         <div class="tudingBox" v-else @click="signIn(0)">
-          <i class="iconfont icon-tuding" style="font-size:24px;line-height:40px; color:red;"></i>
+          <i
+            class="iconfont icon-tuding"
+            style="font-size: 24px; line-height: 40px; color: red"
+          ></i>
         </div>
         <el-form
           :model="overForm"
           :label-width="formLabelWidth"
-          style="padding-top:20px;"
+          style="padding-top: 20px"
           class="overFormClass"
         >
           <el-form-item label="是否完成">
@@ -663,53 +856,76 @@
           </el-form-item>
           <el-form-item label="事项">
             <br />
-            <span>{{overForm.matterName}}</span>
+            <span>{{ overForm.matterName }}</span>
           </el-form-item>
-           <el-form-item label="提醒时间" >
+          <el-form-item label="提醒时间">
             <br />
-            <p v-for="(item,index) in tixingTime" :key="index">{{item.remindTime}}</p>
+            <p v-for="(item, index) in tixingTime" :key="index">
+              {{ item.remindTime }}
+            </p>
           </el-form-item>
-           <el-form-item label="创建时间">
+          <el-form-item label="创建时间">
             <br />
-            <span>{{overForm.createTime}}</span>
+            <span>{{ overForm.createTime }}</span>
           </el-form-item>
           <el-form-item label="日程安排">
             <br />
-            <span>{{overForm.matterOpen}}-{{overForm.end}}</span>
+            <span>{{ overForm.matterOpen }}-{{ overForm.end }}</span>
           </el-form-item>
           <el-form-item label="工作内容">
             <br />
-            <span class="workValue">{{overForm.matterText}}</span>
+            <span class="workValue">{{ overForm.matterText }}</span>
           </el-form-item>
         </el-form>
       </div>
       <div slot="footer">
         <el-button
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold"
+          style="color: #333333; font-size: 18px; font-weight: bold"
           @click="TaskEditFun"
-        >编 辑</el-button>
+          >编 辑</el-button
+        >
         <el-button
           @click="taskDelete"
           type="text"
-          style="color:#333333;font-size:18px;font-weight:bold;margin-left:2.5rem;margin-right:2.215rem"
-        >删 除</el-button>
+          style="
+            color: #333333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 2.5rem;
+            margin-right: 2.215rem;
+          "
+          >删 除</el-button
+        >
       </div>
     </el-dialog>
     <!-- 排序 -->
-    <el-dialog class="fourDialog" :visible.sync="dataList" width="90%" top="5rem">
+    <el-dialog
+      class="fourDialog"
+      :visible.sync="dataList"
+      width="90%"
+      top="5rem"
+    >
       <div>
-        <el-form :model="listForm" :label-width="formLabelWidth" class="listFormClass">
+        <el-form
+          :model="listForm"
+          :label-width="formLabelWidth"
+          class="listFormClass"
+        >
           <el-form-item label="展示时间类型">
             <br />
-            <el-radio-group v-model="listForm.timeRadio" size="small" @change="viewDate">
+            <el-radio-group
+              v-model="listForm.timeRadio"
+              size="small"
+              @change="viewDate"
+            >
               <el-radio-button label="1">创建时间</el-radio-button>
             </el-radio-group>
             <el-radio-group
               v-model="listForm.timeRadio"
               size="small"
               @change="viewDate"
-              style="margin-left:10px;"
+              style="margin-left: 10px"
             >
               <el-radio-button label="2">要求完成时间</el-radio-button>
             </el-radio-group>
@@ -717,35 +933,43 @@
               v-model="listForm.timeRadio"
               size="small"
               @change="viewDate"
-              style="margin-left:10px;"
+              style="margin-left: 10px"
             >
               <el-radio-button label="3">实际完成时间</el-radio-button>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="排序">
             <br />
-            <el-radio-group v-model="listForm.listRadio" size="small" @change="sortFun">
+            <el-radio-group
+              v-model="listForm.listRadio"
+              size="small"
+              @change="sortFun"
+            >
               <el-radio-button label="0">升序</el-radio-button>
             </el-radio-group>
             <el-radio-group
               v-model="listForm.listRadio"
               size="small"
               @change="sortFun"
-              style="margin-left:10px;"
+              style="margin-left: 10px"
             >
               <el-radio-button label="1">降序</el-radio-button>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="展示已完成的">
             <br />
-            <el-radio-group v-model="listForm.overRadio" size="small" @change="finshFun">
+            <el-radio-group
+              v-model="listForm.overRadio"
+              size="small"
+              @change="finshFun"
+            >
               <el-radio-button label="0">否</el-radio-button>
             </el-radio-group>
             <el-radio-group
               v-model="listForm.overRadio"
               size="small"
               @change="finshFun"
-              style="margin-left:10px;"
+              style="margin-left: 10px"
             >
               <el-radio-button label="1">是</el-radio-button>
             </el-radio-group>
@@ -755,6 +979,49 @@
       <div slot="footer">
         <el-button @click="dataList = false">取 消</el-button>
         <el-button type="primary" @click="paixuFun">确 定</el-button>
+      </div>
+    </el-dialog>
+    <el-dialog
+      title="提醒时间"
+      :visible.sync="tixingshijian"
+      width="80%"
+      top="5rem"
+    >
+      <el-form :model="shijian" size="mini">
+        <el-form-item
+          style="margin-top: 5px"
+          v-for="(domain, index) in shijian.domains"
+          :key="index"
+        >
+          <el-date-picker
+            v-model="domain.dateValue"
+            type="date"
+            placeholder="点击新增提醒日期"
+            value-format="yyyy-MM-dd"
+            @blur="DateBlurs(index)"
+            :editable="false"
+          ></el-date-picker>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button
+          type="text"
+          style="color: #333333; font-size: 18px; font-weight: bold"
+          @click="shijianclose"
+          >跳 过</el-button
+        >
+        <el-button
+          @click="shijianclose"
+          type="text"
+          style="
+            color: #333333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 2.5rem;
+            margin-right: 2.215rem;
+          "
+          >确 定</el-button
+        >
       </div>
     </el-dialog>
   </div>
@@ -769,7 +1036,17 @@ export default {
   },
   data() {
     return {
-      tixingTime:"",
+      matterId: null,
+      tixingshijian: false,
+      matterId: null,
+      shijian: {
+        domains: [
+          {
+            dateValue: "",
+          },
+        ],
+      },
+      tixingTime: "",
       input2: "",
       redData: [
         // {
@@ -796,9 +1073,7 @@ export default {
         matterText: "",
       },
       rules: {
-        matterName: [
-          { required: true, message: " ", trigger: "blur" },
-        ],
+        matterName: [{ required: true, message: " ", trigger: "blur" }],
         matterOpen: [
           {
             type: "date",
@@ -848,6 +1123,7 @@ export default {
       dataList: false,
       TaskEdit: false,
       date: "",
+
       pickerOptions: {
         disabledDate: (time) => {
           if (this.newForm.end != "") {
@@ -919,22 +1195,22 @@ export default {
                 }
               }
             }
-         switch (true) {
+            switch (true) {
               case this.redBox:
                 this.bigData = this.redData;
-                 console.log('orangeBox');
+                console.log("orangeBox");
                 break;
-             case this.orangeBox:
+              case this.orangeBox:
                 this.bigData = this.orangeData;
-                console.log('orangeBox');
+                console.log("orangeBox");
                 break;
-                 case this.blueBox:
+              case this.blueBox:
                 this.bigData = this.blueData;
-                 console.log('blueBox');
+                console.log("blueBox");
                 break;
-                 case this.greenBox:
+              case this.greenBox:
                 this.bigData = this.greenData;
-                 console.log('greenBox');
+                console.log("greenBox");
                 break;
               default:
                 break;
@@ -993,26 +1269,26 @@ export default {
               }
             }
           }
-           switch (true) {
-              case this.redBox:
-                this.bigData = this.redData;
-                 console.log('orangeBox');
-                break;
-             case this.orangeBox:
-                this.bigData = this.orangeData;
-                console.log('orangeBox');
-                break;
-                 case this.blueBox:
-                this.bigData = this.blueData;
-                 console.log('blueBox');
-                break;
-                 case this.greenBox:
-                this.bigData = this.greenData;
-                 console.log('greenBox');
-                break;
-              default:
-                break;
-            }
+          switch (true) {
+            case this.redBox:
+              this.bigData = this.redData;
+              console.log("orangeBox");
+              break;
+            case this.orangeBox:
+              this.bigData = this.orangeData;
+              console.log("orangeBox");
+              break;
+            case this.blueBox:
+              this.bigData = this.blueData;
+              console.log("blueBox");
+              break;
+            case this.greenBox:
+              this.bigData = this.greenData;
+              console.log("greenBox");
+              break;
+            default:
+              break;
+          }
           // console.log(this.redData);
         })
         .catch((error) => {});
@@ -1095,16 +1371,16 @@ export default {
             )
             .then((msg) => {
               if (msg.data.state === "2000") {
+                this.matterId = msg.data.data;
+                this.tixingshijian = true;
                 this.paixuFun();
-                console.log(this.newForm)
                 Object.keys(this.newForm).forEach((key) => {
                   this.newForm[key] = "";
                 });
                 this.$refs.newtaskBox.resetFields();
                 this.newTask = false;
-                this.newForm.important = '0'
-                this.newForm.urgent = '0'
-              console.log(this.newForm);
+                this.newForm.important = "0";
+                this.newForm.urgent = "0";
                 this.$message({
                   duration: 1000,
                   message: "添加成功",
@@ -1121,6 +1397,46 @@ export default {
             });
         }
       });
+    },
+    DateBlurs(msg) {
+      var a = msg;
+      if (this.shijian.domains[a].dateValue !== "") {
+        axios
+          .get(
+            this.AJAX.AJAX_URL +
+              "/remind/add?remindId=&matterId=" +
+              this.matterId +
+              "&remindTimestr=" +
+              this.shijian.domains[msg].dateValue +
+              "&userId=" +
+              sessionStorage.getItem("userId")
+          )
+          .then((msg) => {
+            if (msg.data.state === "2000") {
+              this.shijian.domains.push({
+                dateValue: "",
+              });
+              this.paixuFun();
+            } else {
+              this.$message.error(msg.data.message);
+            }
+          })
+          .catch((err) => {
+            this.$message.error("添加失败");
+          });
+      }
+
+      // console.log(this.newFormEdit.domains[msg].dateValue)
+    },
+    shijianclose() {
+      this.shijian = {
+        domains: [
+          {
+            dateValue: "",
+          },
+        ],
+      };
+      this.tixingshijian = false;
     },
     redClick() {
       this.bigData = this.redData;
@@ -1184,13 +1500,13 @@ export default {
         this.taskload = true;
         this.overForm.over = false;
       }
-      axios.get(
-          this.AJAX.AJAX_URL +
-            "/remind/getBymatterId/" +
-            msg.matterId
+      axios
+        .get(
+          this.AJAX.AJAX_URL + "/remind/getBymatterId/" + msg.matterId
           // 14
-        ).then(msg =>{
-           if (msg.data.state === "2000") {
+        )
+        .then((msg) => {
+          if (msg.data.state === "2000") {
             this.tixingTime = [];
             for (let i = 0; i < msg.data.data.length; i++) {
               msg.data.data[i].remindTime = moment(
@@ -1200,32 +1516,31 @@ export default {
             }
             console.log(this.tixingTime);
           }
-        }) 
+        });
     },
 
     // 编辑按钮点击事件
     TaskEditFun() {
-        this.newFormEdit = JSON.parse(JSON.stringify(this.overForm));
-        console.log(this.newFormEdit);
+      this.newFormEdit = JSON.parse(JSON.stringify(this.overForm));
+      console.log(this.newFormEdit);
 
-        for (const key in this.overForm) {
-          if (this.overForm.hasOwnProperty(key)) {
-            this.newFormEdit[key] = this.overForm[key];
-          }
-          this.newFormEdit.forEach = Number(this.overForm.forEach);
+      for (const key in this.overForm) {
+        if (this.overForm.hasOwnProperty(key)) {
+          this.newFormEdit[key] = this.overForm[key];
         }
+        this.newFormEdit.forEach = Number(this.overForm.forEach);
+      }
 
-        // console.log(this.newFormEdit);
-        this.newFormEdit.domains = [
-          {
-            dateValue: "",
-          },
-        ];
-        this.dateMsgFun();
-        // console.log(this.newFormEdit)
-        this.TaskEdit = true;
-        this.taskNoDialog = false;
-
+      // console.log(this.newFormEdit);
+      this.newFormEdit.domains = [
+        {
+          dateValue: "",
+        },
+      ];
+      this.dateMsgFun();
+      // console.log(this.newFormEdit)
+      this.TaskEdit = true;
+      this.taskNoDialog = false;
     },
     // 事件提醒日期获取
     dateMsgFun() {
@@ -1302,20 +1617,19 @@ export default {
     DateBlur(msg) {
       var a = msg;
       if (this.newFormEdit.domains[a].dateValue !== "") {
-      axios
-        .get(
-          this.AJAX.AJAX_URL +
-            "/remind/add?remindId=&matterId=" +
-            this.newFormEdit.matterId +
-            "&remindTimestr=" +
-            this.newFormEdit.domains[msg].dateValue +
-            "&userId=" +
-            sessionStorage.getItem("userId")
-        )
-        .then((msg) => {
-          // console.log(msg);
-        if (msg.data.state === "2000") {
-   
+        axios
+          .get(
+            this.AJAX.AJAX_URL +
+              "/remind/add?remindId=&matterId=" +
+              this.newFormEdit.matterId +
+              "&remindTimestr=" +
+              this.newFormEdit.domains[msg].dateValue +
+              "&userId=" +
+              sessionStorage.getItem("userId")
+          )
+          .then((msg) => {
+            // console.log(msg);
+            if (msg.data.state === "2000") {
               this.dateMsgFun();
               this.newFormEdit.domains[a].dateValue = "";
               this.TaskEdit = false;
@@ -1323,10 +1637,10 @@ export default {
             } else {
               this.$message.error(msg.data.message);
             }
-        })
-        .catch(err =>{
-          this.$message.error('添加失败')
-        });
+          })
+          .catch((err) => {
+            this.$message.error("添加失败");
+          });
       }
       // console.log(this.newFormEdit.domains[msg].dateValue)
     },

@@ -99,6 +99,49 @@
         >
       </div>
     </el-dialog>
+    <el-dialog
+      title="提醒时间"
+      :visible.sync="tixingshijian"
+      width="80%"
+      top="5rem"
+    >
+      <el-form :model="shijian" size="mini">
+        <el-form-item
+          style="margin-top: 5px"
+          v-for="(domain, index) in shijian.domains"
+          :key="index"
+        >
+          <el-date-picker
+            v-model="domain.dateValue"
+            type="date"
+            placeholder="点击新增提醒日期"
+            value-format="yyyy-MM-dd"
+            @blur="DateBlur(index)"
+            :editable="false"
+          ></el-date-picker>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button
+          type="text"
+          style="color: #333333; font-size: 18px; font-weight: bold"
+          @click="shijianclose"
+          >跳 过</el-button
+        >
+        <el-button
+          @click="shijianclose"
+          type="text"
+          style="
+            color: #333333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 2.5rem;
+            margin-right: 2.215rem;
+          "
+          >确 定</el-button
+        >
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -111,6 +154,8 @@ export default {
   mounted() {},
   data() {
     return {
+      matterId: null,
+      tixingshijian: false,
       newForm: {
         matterName: "",
         important: "0",
@@ -118,6 +163,13 @@ export default {
         matterOpen: "",
         end: "",
         matterText: "",
+      },
+      shijian: {
+        domains: [
+          {
+            dateValue: "",
+          },
+        ],
       },
       formLabelWidth: "32",
       rules: {
@@ -184,7 +236,7 @@ export default {
             .then((msg) => {
               if (msg.data.state === "2000") {
                 // console.log("ssssssssssss");
-
+                console.log(msg);
                 Object.keys(this.newForm).forEach((key) => {
                   this.newForm[key] = "";
                 });
@@ -195,6 +247,8 @@ export default {
                   message: "添加成功",
                   type: "success",
                 });
+                this.matterId = msg.data.data;
+                this.tixingshijian = true;
               }
             })
             .catch((error) => {
@@ -213,6 +267,48 @@ export default {
     closeFun() {
       // console.log(this.newTaskShow);
       this.$emit("newTaskShowChange", false);
+    },
+    DateBlur(msg) {
+      var a = msg;
+      if (this.shijian.domains[a].dateValue !== "") {
+        axios
+          .get(
+            this.AJAX.AJAX_URL +
+              "/remind/add?remindId=&matterId=" +
+              this.matterId +
+              "&remindTimestr=" +
+              this.shijian.domains[msg].dateValue +
+              "&userId=" +
+              sessionStorage.getItem("userId")
+          )
+          .then((msg) => {
+            if (msg.data.state === "2000") {
+              this.shijian.domains.push({
+                dateValue: "",
+              });
+            } else {
+              this.$message.error(msg.data.message);
+            }
+          })
+          .catch((err) => {
+            this.$message.error("添加失败");
+          });
+      }
+
+      // console.log(this.newFormEdit.domains[msg].dateValue)
+    },
+    shijianclose() {
+      this.shijian = {
+        domains: [
+          {
+            dateValue: "",
+          },
+        ],
+      };
+      this.tixingshijian = false;
+      this.$emit("newTaskShowChange", false);
+
+
     },
   },
 };
