@@ -1302,15 +1302,14 @@ export default {
         axios
           .get(
             this.AJAX.AJAX_URL +
-              "/matter/update?userId=" +
+              "/matter/finish?userId=" +
               sessionStorage.getItem("userId"),
             {
               params: {
-                importantOne: this.overForm.importantOne,
-                urgentOne: this.overForm.urgentOne,
+            
                 matterId: this.overForm.matterId,
                 finish: 1,
-                SIGN: this.overForm.sign,
+            
               },
             }
           )
@@ -1322,15 +1321,12 @@ export default {
         axios
           .get(
             this.AJAX.AJAX_URL +
-              "/matter/update?userId=" +
+              "/matter/finish?userId=" +
               sessionStorage.getItem("userId"),
             {
               params: {
-                importantOne: this.overForm.importantOne,
-                urgentOne: this.overForm.urgentOne,
                 matterId: this.overForm.matterId,
                 finish: 0,
-                SIGN: this.overForm.sign,
               },
             }
           )
