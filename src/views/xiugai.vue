@@ -152,8 +152,8 @@
             active-color="#3C76FF"
             inactive-color="#999999"
           ></el-switch>
-           <br />
-          <span>{{newFormEdit.matterOpen}}-{{newFormEdit.end}}</span>
+          <br />
+          <span>{{ newFormEdit.matterOpen }}-{{ newFormEdit.end }}</span>
         </el-form-item>
         <el-form-item label="事件提醒设置">
           <br />
@@ -343,7 +343,11 @@ export default {
       console.log(this.overForm.matterId);
       axios
         .get(
-          this.AJAX.AJAX_URL + "/remind/getBymatterId/" + this.overForm.matterId
+          this.AJAX.AJAX_URL +
+            "/remind/getBymatterId?matterId=" +
+            this.overForm.matterId +
+            "&userId=" +
+            sessionStorage.getItem("userId")
         )
         .then((msg) => {
           if (msg.data.state === "2000") {
@@ -431,9 +435,7 @@ export default {
               sessionStorage.getItem("userId")
           )
           .then((msg) => {
-    
             if (msg.data.state === "2000") {
-
               this.dateMsgFun();
               this.newFormEdit.domains[a].dateValue = "";
               this.TaskEdit = false;
@@ -443,7 +445,6 @@ export default {
             }
           })
           .catch((err) => {
-            
             this.$message.error("添加失败");
           });
       }

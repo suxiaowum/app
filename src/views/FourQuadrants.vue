@@ -1036,7 +1036,6 @@ export default {
   },
   data() {
     return {
-      matterId: null,
       tixingshijian: false,
       matterId: null,
       shijian: {
@@ -1502,7 +1501,11 @@ export default {
       }
       axios
         .get(
-          this.AJAX.AJAX_URL + "/remind/getBymatterId/" + msg.matterId
+          this.AJAX.AJAX_URL +
+            "/remind/getBymatterId?matterId=" +
+            msg.matterId +
+            "&userId=" +
+            sessionStorage.getItem("userId")
           // 14
         )
         .then((msg) => {
@@ -1547,9 +1550,10 @@ export default {
       axios
         .get(
           this.AJAX.AJAX_URL +
-            "/remind/getBymatterId/" +
-            this.newFormEdit.matterId
-          // 14
+            "/remind/getBymatterId?matterId=" +
+            this.newFormEdit.matterId +
+            "&userId=" +
+            sessionStorage.getItem("userId")
         )
         .then((msg) => {
           if (msg.data.state === "2000") {
